@@ -24,13 +24,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       },
       {
         "name": "grpc-boom",
-        "reference": "workspace:packages/grpc.boom"
+        "reference": "workspace:packages/grpc-boom"
       }
     ],
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["grpc-boom", ["workspace:packages/grpc.boom"]],
+      ["grpc-boom", ["workspace:packages/grpc-boom"]],
       ["kalos", ["workspace:."]]
     ],
     "fallbackPool": [
@@ -4529,10 +4529,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["grpc-boom", [
-        ["workspace:packages/grpc.boom", {
-          "packageLocation": "./packages/grpc.boom/",
+        ["workspace:packages/grpc-boom", {
+          "packageLocation": "./packages/grpc-boom/",
           "packageDependencies": [
-            ["grpc-boom", "workspace:packages/grpc.boom"],
+            ["grpc-boom", "workspace:packages/grpc-boom"],
             ["@grpc/grpc-js", "npm:1.5.5"],
             ["@types/jest", "npm:27.4.0"],
             ["@types/node", "npm:16.11.24"],

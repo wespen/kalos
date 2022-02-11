@@ -1,0 +1,49 @@
+name: backend.svc-consents
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/grpc-boom.yaml
+      - packages/grpc-boom/**
+      - package.json
+      - tsconfig.json
+      - types/**/*.ts
+      - '!**.md'
+      - '!**/.gitignore'
+  pull_request:
+    paths:
+      - .github/workflows/grpc-boom.yaml
+      - packages/grpc-boom/**
+      - package.json
+      - tsconfig.json
+      - types/**/*.ts
+      - '!**.md'
+      - '!**/.gitignore'
+  workflow_dispatch: null
+
+env:
+  PACKAGE: grpc-boom
+jobs:
+  test_unit:
+    name: Build, Lint, and Unit Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 15, 16, 17]
+    steps:
+      - name: Checkout git repository
+        uses: actions/checkout@master
+      - name: Using node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install yarn
+        run: yarn install --immutable
+      - name: Build package
+        run: yarn workspace $PACKAGE build
+      - name: Lint package
+        run: yarn workspace $PACKAGE lint
+      - name: Run package unit tests
+        run: yarn workspace $PACKAGE test:unit

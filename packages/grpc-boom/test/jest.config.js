@@ -1,4 +1,4 @@
-module.exports = Object.assign({}, require(`kalos/packages/grpc.boom/jest.config.js`), {
+module.exports = Object.assign({}, require(`kalos/packages/grpc-boom/jest.config.js`), {
   collectCoverageFrom: ['src/**/*.ts'],
   coverageThreshold: {
     global: {
