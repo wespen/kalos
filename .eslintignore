@@ -1,0 +1,7 @@
+.vscode/**
+.yarn/**
+**/coverage/**
+**/dist/**
+.eslintrc.js
+commitlint.config.js
+jest.config.js

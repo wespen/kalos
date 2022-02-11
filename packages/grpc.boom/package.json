@@ -1,0 +1,35 @@
+{
+  "name": "grpc-boom",
+  "version": "3.0.0",
+  "description": "A gRPC implementation of the awesome Boom library to help create gRPC-friendly error objects.",
+  "author": "Nicolas Pearson",
+  "license": "BSD-3-Clause",
+  "main": "src/index.ts",
+  "keywords": [
+    "grpc",
+    "boom",
+    "error",
+    "error-handling",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/nicolaspearson/kalos.git"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc --rootDir ./src/",
+    "lint:eslint": "yarn exec:eslint --cache-file .eslintcache $(pwd)",
+    "lint:eslint:fix": "yarn lint:eslint --fix",
+    "lint:prettier": "yarn exec:prettier --check $(pwd)",
+    "lint:prettier:fix": "yarn exec:prettier --write $(pwd)",
+    "lint": "yarn lint:eslint && yarn lint:prettier",
+    "lint:fix": "yarn lint:eslint:fix && yarn lint:prettier:fix",
+    "test:unit": "jest"
+  },
+  "devDependencies": {
+    "@grpc/grpc-js": "^1.5.5",
+    "protobufjs": "^6.11.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.5"
+  }
+}

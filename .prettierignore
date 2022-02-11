@@ -1,0 +1,22 @@
+# Directories
+.husky/**
+.yarn/**
+.vscode/**
+**/coverage/**
+**/dist/**
+
+# Files
+.editorconfig
+.env*
+.eslintignore
+.gitignore
+.npmrc
+.nvmrc
+.pnp.cjs
+.pnp.loader.mjs
+.prettierignore
+.prettierrc
+.yarnrc.yml
+LICENSE
+package.json
+yarn.lock
