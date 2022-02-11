@@ -17,7 +17,7 @@
     "url": "ssh://git@github.com/nicolaspearson/kalos.git"
   },
   "scripts": {
-    "build": "rimraf dist && tsc --rootDir ./src/",
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
     "lint:eslint": "yarn exec:eslint --cache-file .eslintcache $(pwd)",
     "lint:eslint:fix": "yarn lint:eslint --fix",
     "lint:prettier": "yarn exec:prettier --check $(pwd)",
