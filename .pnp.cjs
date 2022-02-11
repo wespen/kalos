@@ -1091,6 +1091,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@grpc/grpc-js", "npm:1.5.5"],
             ["@grpc/proto-loader", "npm:0.6.9"],
+            ["@types/long", "npm:4.0.1"],
             ["@types/node", "npm:17.0.17"]
           ],
           "linkType": "HARD",
@@ -4533,6 +4534,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["grpc-boom", "workspace:packages/grpc.boom"],
             ["@grpc/grpc-js", "npm:1.5.5"],
+            ["@types/jest", "npm:27.4.0"],
+            ["@types/node", "npm:16.11.24"],
+            ["jest", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:27.5.1"],
+            ["kalos", "workspace:."],
             ["protobufjs", "npm:6.11.2"],
             ["rimraf", "npm:3.0.2"],
             ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"]

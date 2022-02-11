@@ -1187,7 +1187,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/long@npm:^4.0.1":
+"@types/long@npm:*, @types/long@npm:^4.0.1":
   version: 4.0.1
   resolution: "@types/long@npm:4.0.1"
   checksum: ff9653c33f5000d0f131fd98a950a0343e2e33107dd067a97ac4a3b9678e1a2e39ea44772ad920f54ef6e8f107f76bc92c2584ba905a0dc4253282a4101166d0
@@ -3402,9 +3402,15 @@ __metadata:
   resolution: "grpc-boom@workspace:packages/grpc.boom"
   dependencies:
     "@grpc/grpc-js": ^1.5.5
+    "@types/jest": 27.4.0
+    "@types/node": ^16.11.24
+    jest: ^27.5.1
+    kalos: "workspace:*"
     protobufjs: ^6.11.2
     rimraf: ^3.0.2
     typescript: ^4.5.5
+  peerDependencies:
+    "@types/node": ^16.11.24
   languageName: unknown
   linkType: soft
 
@@ -4596,7 +4602,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kalos@workspace:.":
+"kalos@workspace:*, kalos@workspace:.":
   version: 0.0.0-use.local
   resolution: "kalos@workspace:."
   dependencies:
