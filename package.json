@@ -6,7 +6,6 @@
   "packageManager": "yarn@3.1.1",
   "engines": {
     "node": ">=v16.14.0",
-    "npm": "please-use-yarn",
     "yarn": ">=v3.1.1"
   },
   "scripts": {
