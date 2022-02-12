@@ -1,6 +1,8 @@
 name: Publish grpc-boom
 'on':
-  push:
+  release:
+    types:
+      - published
     tags:
       - grpc-boom/*
   workflow_dispatch:
@@ -75,6 +77,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Publish the package
         run: |
+          cd ${{ env.PACKAGE_JSON_FOLDER }}
           sed -i 's/grpc-boom/grpc.boom/g' package.json
           npm --no-git-tag-version version $RELEASE_VERSION
           npm config set registry https://registry.npmjs.org
@@ -99,6 +102,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Publish the package
         run: |
+          cd ${{ env.PACKAGE_JSON_FOLDER }}
           sed -i 's/grpc-boom/grpc.boom/g' package.json
           npm --no-git-tag-version version $RELEASE_VERSION
           npm config set registry https://npm.pkg.github.com
