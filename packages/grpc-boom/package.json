@@ -1,6 +1,6 @@
 {
   "name": "grpc-boom",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A gRPC implementation of the awesome Boom library to help create gRPC-friendly error objects.",
   "author": "Nicolas Pearson",
   "license": "BSD-3-Clause",
