@@ -26,12 +26,12 @@ on:
 env:
   PACKAGE: grpc-boom
 jobs:
-  test_unit:
-    name: Build, Lint, and Unit Test
+  test:
+    name: Build, Lint, and Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14, 15, 16, 17]
+        node-version: [16]
     steps:
       - name: Checkout git repository
         uses: actions/checkout@master
@@ -39,7 +39,7 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install yarn
+      - name: Install yarn dependencies
         run: yarn install --immutable
       - name: Build package
         run: yarn workspace $PACKAGE build
@@ -47,3 +47,23 @@ jobs:
         run: yarn workspace $PACKAGE lint
       - name: Run package unit tests
         run: yarn workspace $PACKAGE test:unit
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout git repository
+        uses: actions/checkout@master
+      - name: Clean old release drafts
+        run: hub release -f "%T (%S) %n" --include-drafts | grep " (draft)" | awk '{print $1}' | xargs --no-run-if-empty -t -n1 hub release delete
+        env:
+          GITHUB_USER: nicolaspearson
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create release
+        uses: 'marvinpinto/action-automatic-releases@latest'
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: 'latest'
+          draft: true
+          prerelease: false
+          title: 'Release Candidate (@latest)'
