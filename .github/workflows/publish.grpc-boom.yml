@@ -52,7 +52,7 @@ jobs:
       - name: Commit new package.json version
         run: |
           git config --global user.email "nic.s.pearson@gmail.com"
-          git config --global user.name "nicolaspearson"
+          git config --global user.name "Nicbotic"
           git add ${{ env.PACKAGE_JSON_FOLDER }}/package.json
           git commit -m "chore(${{ env.PACKAGE }}): set package.json version ${{ steps.load_version.outputs.version }}"
       - name: Push changes to current git repository
