@@ -1,8 +1,7 @@
-name: Publish heart-ping
-'on':
-  release:
-    types:
-      - published
+name: publish heart-ping
+
+on:
+  push:
     tags:
       - heart-ping/*
   workflow_dispatch:
@@ -10,9 +9,11 @@ name: Publish heart-ping
       version:
         description: The version to publish
         required: true
+
 env:
   PACKAGE: heart-ping
   PACKAGE_JSON_FOLDER: packages/heart-ping
+
 jobs:
   bump:
     runs-on: ubuntu-latest

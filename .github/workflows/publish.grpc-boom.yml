@@ -1,8 +1,7 @@
-name: Publish grpc-boom
-'on':
-  release:
-    types:
-      - published
+name: publish grpc-boom
+
+on:
+  push:
     tags:
       - grpc-boom/*
   workflow_dispatch:
@@ -10,9 +9,11 @@ name: Publish grpc-boom
       version:
         description: The version to publish
         required: true
+
 env:
   PACKAGE: grpc-boom
   PACKAGE_JSON_FOLDER: packages/grpc-boom
+
 jobs:
   bump:
     runs-on: ubuntu-latest

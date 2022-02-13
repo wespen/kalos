@@ -1,4 +1,4 @@
-name: backend.svc-consents
+name: heart-ping
 
 on:
   push:
@@ -47,23 +47,16 @@ jobs:
         run: yarn workspace $PACKAGE lint
       - name: Run package unit tests
         run: yarn workspace $PACKAGE test:unit
-  release:
+  draft-release:
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
     needs: test
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout git repository
-        uses: actions/checkout@master
-      - name: Clean old release drafts
-        run: hub release -f "%T (%S) %n" --include-drafts | grep " (draft)" | awk '{print $1}' | xargs --no-run-if-empty -t -n1 hub release delete
-        env:
-          GITHUB_USER: nicolaspearson
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create release
-        uses: 'marvinpinto/action-automatic-releases@latest'
+      - name: Create release draft
+        id: release-wizard
+        uses: darioblanco/release-wizard@main
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          automatic_release_tag: 'latest'
           draft: true
-          prerelease: false
-          title: 'Release Candidate (@latest)'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          app: ${{ env.PACKAGE }}
+          templatePath: release-wizard.md
