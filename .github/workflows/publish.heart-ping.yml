@@ -1,7 +1,9 @@
 name: publish heart-ping
 
 on:
-  push:
+  release:
+    types:
+      - published
     tags:
       - heart-ping/**
   workflow_dispatch:
