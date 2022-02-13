@@ -2,8 +2,6 @@ name: publish heart-ping
 
 on:
   push:
-    branches:
-      - main
     tags:
       - heart-ping/**
   workflow_dispatch:
