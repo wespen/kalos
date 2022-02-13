@@ -6,7 +6,7 @@
   "commitMessageAction": "Pin",
   "commitMessageExtra": "{{#if isMajor}}v{{{newMajor}}}{{else}}{{#if isSingleVersion}}v{{{toVersion}}}{{else}}{{{newValue}}}{{/if}}{{/if}}",
   "commitMessageTopic": "{{depName}}",
-  "enabledManagers": ["github", "npm"],
+  "enabledManagers": ["github-actions", "npm"],
   "packageRules": [
     {
       "automerge": true,

@@ -75,6 +75,10 @@ jobs:
           always-auth: true
           node-version: 16
           registry-url: https://registry.npmjs.org
+      - name: Install yarn dependencies
+        run: yarn install --immutable
+      - name: Build package
+        run: yarn workspace $PACKAGE build
       - name: Publish the package
         run: |
           cd ${{ env.PACKAGE_JSON_FOLDER }}
@@ -99,6 +103,10 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org
+      - name: Install yarn dependencies
+        run: yarn install --immutable
+      - name: Build package
+        run: yarn workspace $PACKAGE build
       - name: Publish the package
         run: |
           cd ${{ env.PACKAGE_JSON_FOLDER }}
