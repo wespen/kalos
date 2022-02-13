@@ -102,7 +102,8 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 16
-          registry-url: https://registry.npmjs.org
+          registry-url: https://npm.pkg.github.com
+          scope: '@nicolaspearson'
       - name: Install yarn dependencies
         run: yarn install --immutable
       - name: Build package
@@ -113,7 +114,7 @@ jobs:
           sed -i 's/registry.npmjs.org/npm.pkg.github.com/g' package.json
           npm --no-git-tag-version version $RELEASE_VERSION
           npm config set registry https://npm.pkg.github.com
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          echo "https://npm.pkg.github.com/nicolaspearson/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
