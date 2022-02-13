@@ -1,0 +1,69 @@
+name: backend.svc-consents
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/heart-ping.yaml
+      - packages/heart-ping/**
+      - package.json
+      - tsconfig.json
+      - types/**/*.ts
+      - '!**.md'
+      - '!**/.gitignore'
+  pull_request:
+    paths:
+      - .github/workflows/heart-ping.yaml
+      - packages/heart-ping/**
+      - package.json
+      - tsconfig.json
+      - types/**/*.ts
+      - '!**.md'
+      - '!**/.gitignore'
+  workflow_dispatch: null
+
+env:
+  PACKAGE: heart-ping
+jobs:
+  test:
+    name: Build, Lint, and Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16]
+    steps:
+      - name: Checkout git repository
+        uses: actions/checkout@master
+      - name: Using node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install yarn dependencies
+        run: yarn install --immutable
+      - name: Build package
+        run: yarn workspace $PACKAGE build
+      - name: Lint package
+        run: yarn workspace $PACKAGE lint
+      - name: Run package unit tests
+        run: yarn workspace $PACKAGE test:unit
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout git repository
+        uses: actions/checkout@master
+      - name: Clean old release drafts
+        run: hub release -f "%T (%S) %n" --include-drafts | grep " (draft)" | awk '{print $1}' | xargs --no-run-if-empty -t -n1 hub release delete
+        env:
+          GITHUB_USER: nicolaspearson
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create release
+        uses: 'marvinpinto/action-automatic-releases@latest'
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: 'latest'
+          draft: true
+          prerelease: false
+          title: 'Release Candidate (@latest)'

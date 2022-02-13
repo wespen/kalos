@@ -25,12 +25,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "grpc-boom",
         "reference": "workspace:packages/grpc-boom"
+      },
+      {
+        "name": "heart-ping",
+        "reference": "workspace:packages/heart-ping"
       }
     ],
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
       ["grpc-boom", ["workspace:packages/grpc-boom"]],
+      ["heart-ping", ["workspace:packages/heart-ping"]],
       ["kalos", ["workspace:."]]
     ],
     "fallbackPool": [
@@ -69,7 +74,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:3.0.2"],
             ["run-script-webpack-plugin", "npm:0.0.11"],
             ["ts-jest", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:27.1.3"],
-            ["ts-loader", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:9.2.6"],
             ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"]
           ],
           "linkType": "SOFT",
@@ -3425,17 +3429,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["enhanced-resolve", [
-        ["npm:5.9.0", {
-          "packageLocation": "./.yarn/cache/enhanced-resolve-npm-5.9.0-7a2926f8d6-06435f5267.zip/node_modules/enhanced-resolve/",
-          "packageDependencies": [
-            ["enhanced-resolve", "npm:5.9.0"],
-            ["graceful-fs", "npm:4.2.9"],
-            ["tapable", "npm:2.2.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["entities", [
         ["npm:2.1.0", {
           "packageLocation": "./.yarn/cache/entities-npm-2.1.0-b27b8aebc6-a10a877e48.zip/node_modules/entities/",
@@ -4623,6 +4616,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["has-unicode", "npm:2.0.1"]
           ],
           "linkType": "HARD",
+        }]
+      ]],
+      ["heart-ping", [
+        ["workspace:packages/heart-ping", {
+          "packageLocation": "./packages/heart-ping/",
+          "packageDependencies": [
+            ["heart-ping", "workspace:packages/heart-ping"],
+            ["@types/jest", "npm:27.4.0"],
+            ["@types/node", "npm:16.11.24"],
+            ["jest", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:27.5.1"],
+            ["kalos", "workspace:."],
+            ["rimraf", "npm:3.0.2"],
+            ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"]
+          ],
+          "linkType": "SOFT",
         }]
       ]],
       ["hosted-git-info", [
@@ -5930,7 +5938,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:3.0.2"],
             ["run-script-webpack-plugin", "npm:0.0.11"],
             ["ts-jest", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:27.1.3"],
-            ["ts-loader", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:9.2.6"],
             ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"]
           ],
           "linkType": "SOFT",
@@ -7903,15 +7910,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["tapable", [
-        ["npm:2.2.1", {
-          "packageLocation": "./.yarn/cache/tapable-npm-2.2.1-8cf5ff3039-3b7a1b4d86.zip/node_modules/tapable/",
-          "packageDependencies": [
-            ["tapable", "npm:2.2.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["tar", [
         ["npm:6.1.11", {
           "packageLocation": "./.yarn/cache/tar-npm-6.1.11-e6ac3cba9c-a04c07bb9e.zip/node_modules/tar/",
@@ -8097,36 +8095,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "esbuild",
             "jest",
             "typescript"
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["ts-loader", [
-        ["npm:9.2.6", {
-          "packageLocation": "./.yarn/cache/ts-loader-npm-9.2.6-a34197e218-309d8fb634.zip/node_modules/ts-loader/",
-          "packageDependencies": [
-            ["ts-loader", "npm:9.2.6"]
-          ],
-          "linkType": "SOFT",
-        }],
-        ["virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:9.2.6", {
-          "packageLocation": "./.yarn/__virtual__/ts-loader-virtual-206baae7ff/0/cache/ts-loader-npm-9.2.6-a34197e218-309d8fb634.zip/node_modules/ts-loader/",
-          "packageDependencies": [
-            ["ts-loader", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:9.2.6"],
-            ["@types/typescript", null],
-            ["@types/webpack", null],
-            ["chalk", "npm:4.1.2"],
-            ["enhanced-resolve", "npm:5.9.0"],
-            ["micromatch", "npm:4.0.4"],
-            ["semver", "npm:7.3.5"],
-            ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"],
-            ["webpack", null]
-          ],
-          "packagePeers": [
-            "@types/typescript",
-            "@types/webpack",
-            "typescript",
-            "webpack"
           ],
           "linkType": "HARD",
         }]
