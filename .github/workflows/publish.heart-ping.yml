@@ -2,8 +2,10 @@ name: publish heart-ping
 
 on:
   push:
+    branches:
+      - main
     tags:
-      - heart-ping/*
+      - heart-ping/**
   workflow_dispatch:
     inputs:
       version:
@@ -15,7 +17,7 @@ env:
   PACKAGE_JSON_FOLDER: packages/heart-ping
 
 jobs:
-  bump:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current git repository

@@ -2,8 +2,10 @@ name: publish grpc-boom
 
 on:
   push:
+    branches:
+      - main
     tags:
-      - grpc-boom/*
+      - grpc-boom/**
   workflow_dispatch:
     inputs:
       version:
@@ -15,7 +17,7 @@ env:
   PACKAGE_JSON_FOLDER: packages/grpc-boom
 
 jobs:
-  bump:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current git repository
