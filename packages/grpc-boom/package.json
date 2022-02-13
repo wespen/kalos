@@ -4,7 +4,7 @@
   "description": "A gRPC implementation of the awesome Boom library to help create gRPC-friendly error objects.",
   "author": "Nicolas Pearson",
   "license": "BSD-3-Clause",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "keywords": [
     "grpc",
     "boom",
@@ -15,10 +15,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@github.com/nicolaspearson/kalos.git"
-  },
+  "repository":"https://github.com/nicolaspearson/kalos.git",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "lint:eslint": "yarn exec:eslint --cache-file .eslintcache $(pwd)",

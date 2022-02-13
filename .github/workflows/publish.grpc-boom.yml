@@ -102,6 +102,7 @@ jobs:
       - name: Publish the package
         run: |
           cd ${{ env.PACKAGE_JSON_FOLDER }}
+          sed -i 's/registry.npmjs.org/npm.pkg.github.com/g' package.json
           npm --no-git-tag-version version $RELEASE_VERSION
           npm config set registry https://npm.pkg.github.com
           echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
