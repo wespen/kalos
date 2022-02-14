@@ -7,6 +7,21 @@ This yarn monorepo contains a variety of packages that are published to npm.
 - [grpc-boom](./packages/grpc-boom/README.md)
 - [heart-ping](./packages/heart-ping/README.md)
 
+### Working With Packages
+
+The is a yarn monorepo, therefore scripts in packages can be executed by pre-pending the command
+with `yarn workspace` and specifying the name of the package, e.g.
+
+- Build **grpc-boom**: `yarn workspace grpc-boom build`
+- Lint **grpc-boom**: `yarn workspace grpc-boom lint`
+- Test **grpc-boom**: `yarn workspace grpc-boom test:unit`
+
+> Tip: add `yarn workspace` as an alias to your .bashrc / .zshrc, e.g.
+>
+> ```sh
+> alias yw='yarn workspace'
+> ```
+
 ## Release Workflow
 
 Each package in this repository has a **base** workflow, e.g. `.github/workflows/grpc-boom.yaml`.
@@ -76,6 +91,6 @@ Here are some basic rules to follow to ensure timely addition of your request:
    satisfy the change.
 3. Please keep PR titles easy to read and descriptive of changes, this will make them easier to
    merge.
-4. Pull requests _must_ be made against `develop` branch. Any other branch (unless specified by the
+4. Pull requests _must_ be made against the `main` branch. Any other branch (unless specified by the
    maintainers) will get rejected.
 5. Check for existing issues first, before filing a new issue.
