@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout current git repository
         uses: actions/checkout@master
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
       - name: Use Node.js
         uses: actions/setup-node@master
         with:
