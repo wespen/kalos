@@ -22,6 +22,14 @@ with `yarn workspace` and specifying the name of the package, e.g.
 > alias yw='yarn workspace'
 > ```
 
+### Creating Package Scoped Commits
+
+In order to assist with changelog generation, this repository uses
+[conventional commit](https://www.conventionalcommits.org/en/v1.0.0/#specification), changes to a
+package should adhere to this style and include the name of the package, e.g.
+
+- `chore(grpc-boom): set package.json version 3.0.9`
+
 ## Release Workflow
 
 Each package in this repository has a **base** workflow, e.g. `.github/workflows/grpc-boom.yaml`.
