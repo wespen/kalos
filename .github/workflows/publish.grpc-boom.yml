@@ -3,7 +3,7 @@ name: publish grpc-boom
 on:
   push:
     tags:
-      - 'grpc-boom/**'
+      - 'grpc-boom/*.*.*'
   workflow_dispatch:
     inputs:
       version:

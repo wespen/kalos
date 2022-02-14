@@ -3,7 +3,7 @@ name: publish heart-ping
 on:
   push:
     tags:
-      - 'heart-ping/**'
+      - 'heart-ping/*.*.*'
   workflow_dispatch:
     inputs:
       version:
