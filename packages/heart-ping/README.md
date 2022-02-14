@@ -8,7 +8,8 @@
 [license-url]: https://opensource.org/licenses/MIT
 [license-image]: https://img.shields.io/npm/l/make-coverage-badge.svg
 
-A simple light-weight Typescript module for pinging HTTP services at set intervals to provide a heartbeat.
+A simple light-weight Typescript module for pinging HTTP services at set intervals to provide a
+heartbeat.
 
 ## Installation
 
@@ -21,13 +22,13 @@ yarn add heart-ping
 ```typescript
 import HeartPing from 'heart-ping';
 
-myHeartPing = new HeartPing();
-myHeartPing.setBeatInterval(10000);
-myHeartPing.setBeatTimeout(30000);
-myHeartPing.setOnTimeout(() => {
+const heartPing = new HeartPing();
+heartPing.setBeatInterval(10_000);
+heartPing.setBeatTimeout(30_000);
+heartPing.setOnTimeout(() => {
   console.log('The ping request to www.google.com has timed out!');
 });
-myHeartPing.start(
+heartPing.start(
   'www.google.com', // or using https, e.g.: 'https://www.google.com'
   80,
   (time) => {
