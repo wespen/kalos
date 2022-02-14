@@ -21,7 +21,6 @@ on:
       - types/**/*.ts
       - '!**.md'
       - '!**/.gitignore'
-  workflow_dispatch: null
 
 env:
   PACKAGE: heart-ping
