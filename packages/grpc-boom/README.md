@@ -651,6 +651,10 @@ Generates the following response payload:
 }
 ```
 
+## License
+
+BSD-3 License
+
 ## Contributing
 
 Contributions are encouraged, please see further details below:
@@ -664,10 +668,6 @@ Here are some basic rules to follow to ensure timely addition of your request:
    satisfy the change.
 3. Please keep PR titles easy to read and descriptive of changes, this will make them easier to
    merge.
-4. Pull requests _must_ be made against `develop` branch. Any other branch (unless specified by the
+4. Pull requests _must_ be made against the `main` branch. Any other branch (unless specified by the
    maintainers) will get rejected.
 5. Check for existing issues first, before filing a new issue.
-
-## License
-
-BSD-3 License
