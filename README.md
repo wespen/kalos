@@ -29,6 +29,7 @@ In order to assist with changelog generation, this repository uses
 package should adhere to this style and include the name of the package, e.g.
 
 - `chore(grpc-boom): set package.json version 3.0.9`
+- `docs(heart-ping): add contribution guidelines`
 
 ## Release Workflow
 
