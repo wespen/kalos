@@ -57,7 +57,7 @@ jobs:
         id: release-wizard
         uses: darioblanco/release-wizard@main
         with:
-          draft: true
-          token: ${{ secrets.GITHUB_TOKEN }}
           app: ${{ env.PACKAGE }}
+          draft: true
           templatePath: release-wizard.md
+          token: ${{ secrets.GITHUB_TOKEN }}

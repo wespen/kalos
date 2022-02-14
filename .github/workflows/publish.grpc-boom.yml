@@ -1,11 +1,9 @@
 name: publish grpc-boom
 
 on:
-  release:
-    types:
-      - published
+  push:
     tags:
-      - grpc-boom/**
+      - 'grpc-boom/**'
   workflow_dispatch:
     inputs:
       version:
