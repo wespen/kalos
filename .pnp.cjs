@@ -48,7 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@commitlint/cli", "npm:16.2.1"],
             ["@commitlint/config-conventional", "npm:16.2.1"],
             ["@types/jest", "npm:27.4.0"],
-            ["@types/node", "npm:16.11.24"],
+            ["@types/node", "npm:16.11.25"],
             ["@types/prettier", "npm:2.4.4"],
             ["@typescript-eslint/eslint-plugin", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:5.12.0"],
             ["@typescript-eslint/parser", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:5.12.0"],
@@ -1768,10 +1768,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/node", [
-        ["npm:16.11.24", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-16.11.24-645e42a6ed-d4827d548c.zip/node_modules/@types/node/",
+        ["npm:16.11.25", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-16.11.25-78cf927571-0b6e25a813.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:16.11.24"]
+            ["@types/node", "npm:16.11.25"]
           ],
           "linkType": "HARD",
         }],
@@ -4614,7 +4614,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["grpc-boom", "workspace:packages/grpc-boom"],
             ["@grpc/grpc-js", "npm:1.5.5"],
             ["@types/jest", "npm:27.4.0"],
-            ["@types/node", "npm:16.11.24"],
+            ["@types/node", "npm:16.11.25"],
             ["jest", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:27.5.1"],
             ["kalos", "workspace:."],
             ["protobufjs", "npm:6.11.2"],
@@ -4702,7 +4702,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["heart-ping", "workspace:packages/heart-ping"],
             ["@types/jest", "npm:27.4.0"],
-            ["@types/node", "npm:16.11.24"],
+            ["@types/node", "npm:16.11.25"],
             ["jest", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:27.5.1"],
             ["kalos", "workspace:."],
             ["rimraf", "npm:3.0.2"],
@@ -5990,7 +5990,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@commitlint/cli", "npm:16.2.1"],
             ["@commitlint/config-conventional", "npm:16.2.1"],
             ["@types/jest", "npm:27.4.0"],
-            ["@types/node", "npm:16.11.24"],
+            ["@types/node", "npm:16.11.25"],
             ["@types/prettier", "npm:2.4.4"],
             ["@typescript-eslint/eslint-plugin", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:5.12.0"],
             ["@typescript-eslint/parser", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:5.12.0"],
