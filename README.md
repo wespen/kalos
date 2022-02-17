@@ -78,11 +78,6 @@ This will trigger the the `.github/workflows/publish.grpc-boom.yaml` workflow by
 to the repository. The publish workflow updates the version of the package in the `package.json`
 file, and pushes the new version to npm.
 
-### TODO
-
-- Do not trigger the **base** workflow when the version in the `package.json` file is bumped.
-- Attempt to make the `publish.*` workflow generic.
-
 ## License
 
 MIT License
