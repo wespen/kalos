@@ -5,8 +5,17 @@ This yarn monorepo contains a variety of packages that are published to npm.
 ## Packages
 
 - [grpc-boom](./packages/grpc-boom/README.md)
+- [grpc-ts-health-check](./packages/grpc-ts-health-check/README.md)
 - [heart-ping](./packages/heart-ping/README.md)
 - [node-ts-uuid](./packages/node-ts-uuid/README.md)
+
+## License
+
+MIT License
+
+## Contributing
+
+Contributions are encouraged, please see further details below:
 
 ### Working With Packages
 
@@ -79,14 +88,6 @@ To publish a package to npm one of the draft releases needs to be published:
 This will trigger the the `.github/workflows/publish.grpc-boom.yaml` workflow by pushing a new tag
 to the repository. The publish workflow updates the version of the package in the `package.json`
 file, and pushes the new version to npm.
-
-## License
-
-MIT License
-
-## Contributing
-
-Contributions are encouraged, please see further details below:
 
 ### Pull Requests
 
