@@ -28,6 +28,8 @@ jobs:
           node-version: 16
       - name: Install yarn dependencies
         run: yarn install --immutable
+      - name: Build grpc-boom package
+        run: yarn workspace grpc-boom build
       - name: Build package
         run: yarn workspace $PACKAGE build
       - name: Load package version
