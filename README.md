@@ -42,6 +42,32 @@ package should adhere to this style and include the name of the package, e.g.
 - `docs(heart-ping): add contribution guidelines`
 - `feat(node-ts-uuid): initial migration`
 
+### Sharing Packages In The Monorepo
+
+Packages can be imported / shared within the monorepo, either using the `workspace` protocol, the
+`link` protocol, or requiring the `npm` version.
+
+- `npm`: Resolves from the npm registry, e.g. `"grpc-boom": "npm:^3.0.9"`
+- `link`: Creates a link to a relative folder, e.g. `"grpc-boom":"link:../grpc-boom/src"`
+- `workspace`: Creates a link to a package in a workspace e.g. `"kalos": "workspace:*"`
+
+#### Package Resolution (Workaround)
+
+The `grpc-ts-health-check` package uses the `grpc-boom` package, but because it is in the workspace
+yarn does not download the dependency from `npm`. To ensure the package is correctly resolved the
+following configuration is required:
+
+```json
+"dependencies": {
+  "grpc-boom": "npm:^3.0.9"
+},
+"devDependencies": {
+  "grpc-boom": "link:../grpc-boom/src"
+}
+```
+
+The `grpc-boom` package can now be resolved locally and when published.
+
 ## Release Workflow
 
 Each package in this repository has a **base** workflow, e.g. `.github/workflows/grpc-boom.yaml`.
