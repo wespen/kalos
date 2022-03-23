@@ -28,6 +28,7 @@ jobs:
   test:
     name: Build, Lint, and Test
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
     strategy:
       matrix:
         node-version: [16]
@@ -53,7 +54,7 @@ jobs:
     steps:
       - name: Create release draft
         id: release-wizard
-        uses: darioblanco/release-wizard@main
+        uses: darioblanco/release-wizard@v1.1.0
         with:
           app: ${{ env.PACKAGE }}
           draft: true
