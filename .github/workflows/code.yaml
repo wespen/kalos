@@ -34,6 +34,7 @@ jobs:
       - name: Run package unit tests
         run: yarn workspace ${{ inputs.package }} test:unit
   draft-release:
+    name: draft release
     if: github.ref == 'refs/heads/main'
     needs: test
     runs-on: ubuntu-latest

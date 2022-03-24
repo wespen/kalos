@@ -19,7 +19,7 @@ on:
 
 jobs:
   publish:
-    name: publish
+    name: bump version and publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current git repository
