@@ -1,6 +1,6 @@
 {
   "name": "heart-ping",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "A simple light-weight Typescript module for pinging HTTP services at set intervals to provide a heartbeat.",
   "license": "MIT",
   "main": "dist/index.js",
