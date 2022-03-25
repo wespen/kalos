@@ -10,10 +10,10 @@ import jsonStringify from 'safe-stable-stringify';
 import { Logger, config, createLogger, format, transports } from 'winston';
 import * as Transport from 'winston-transport';
 
-import { Config, OptionalConfig } from '$/config';
-import { defaultFormatter, injectErrors, injectMetadata, logstashFormatter } from '$/formatter';
-import { requestIdHandler } from '$/request-id';
-import { sanitizeRequest, sanitizeResponse } from '$/sanitizer';
+import { Config, OptionalConfig } from './config';
+import { defaultFormatter, injectErrors, injectMetadata, logstashFormatter } from './formatter';
+import { requestIdHandler } from './request-id';
+import { sanitizeRequest, sanitizeResponse } from './sanitizer';
 
 export class Ewl {
   public readonly config: Config;

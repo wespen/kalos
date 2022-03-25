@@ -1,4 +1,4 @@
-import { Config, LogLevel } from '$/config';
+import { Config, LogLevel } from '../../src/config';
 
 describe('Config', () => {
   describe('formatValidationErrors', () => {

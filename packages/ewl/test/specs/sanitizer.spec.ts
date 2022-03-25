@@ -1,6 +1,6 @@
 import * as expressWinston from 'express-winston';
 
-import { sanitizeRequest, sanitizeResponse } from '$/sanitizer';
+import { sanitizeRequest, sanitizeResponse } from '../../src/sanitizer';
 
 const expressWinstonLoggerMock = jest.fn().mockReturnThis();
 jest.mock('express-winston', () => ({

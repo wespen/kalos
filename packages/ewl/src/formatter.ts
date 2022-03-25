@@ -3,8 +3,8 @@ import jsonStringify from 'safe-stable-stringify';
 import { MESSAGE } from 'triple-beam';
 import { format } from 'winston';
 
-import { Config } from '$/config';
-import { getRequestIdContext } from '$/request-id';
+import { Config } from './config';
+import { getRequestIdContext } from './request-id';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 function attachMetadata(config: Config, info: TransformableInfo): TransformableInfo {

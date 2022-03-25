@@ -1,8 +1,8 @@
 import * as expressWinston from 'express-winston';
 
-import { LogLevel } from '$/config';
-import { injectErrors, logstashFormatter } from '$/formatter';
-import { Ewl } from '$/index';
+import { LogLevel } from '../../src/config';
+import { injectErrors, logstashFormatter } from '../../src/formatter';
+import { Ewl } from '../../src/index';
 
 const expressWinstonLoggerMock = jest.fn().mockReturnThis();
 jest.mock('express-winston', () => ({

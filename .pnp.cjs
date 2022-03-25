@@ -96,16 +96,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
-      ["$", [\
-        ["link:./src::locator=ewl%40workspace%3Apackages%2Fewl", {\
-          "packageLocation": "./packages/ewl/src/",\
-          "packageDependencies": [\
-            ["$", "link:./src::locator=ewl%40workspace%3Apackages%2Fewl"]\
-          ],\
-          "linkType": "SOFT",\
-          "discardFromLookup": true\
-        }]\
-      ]],\
       ["@ampproject/remapping", [\
         ["npm:2.1.2", {\
           "packageLocation": "./.yarn/cache/@ampproject-remapping-npm-2.1.2-d1536e36d6-e023f92cdd.zip/node_modules/@ampproject/remapping/",\
@@ -4644,7 +4634,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/ewl/",\
           "packageDependencies": [\
             ["ewl", "workspace:packages/ewl"],\
-            ["$", "link:./src::locator=ewl%40workspace%3Apackages%2Fewl"],\
             ["@types/common-tags", "npm:1.8.1"],\
             ["@types/express", "npm:4.17.13"],\
             ["@types/jest", "npm:27.4.1"],\

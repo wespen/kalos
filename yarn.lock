@@ -5,12 +5,6 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"$@link:./src::locator=ewl%40workspace%3Apackages%2Fewl":
-  version: 0.0.0-use.local
-  resolution: "$@link:./src::locator=ewl%40workspace%3Apackages%2Fewl"
-  languageName: node
-  linkType: soft
-
 "@ampproject/remapping@npm:^2.1.0":
   version: 2.1.2
   resolution: "@ampproject/remapping@npm:2.1.2"
@@ -3404,7 +3398,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ewl@workspace:packages/ewl"
   dependencies:
-    $: "link:./src"
     "@types/common-tags": ^1.8.1
     "@types/express": ^4.17.13
     "@types/jest": 27.4.1

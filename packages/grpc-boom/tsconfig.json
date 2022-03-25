@@ -3,9 +3,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
-    "paths": {
-      "$/*": ["./src/*"]
-    },
     "removeComments": false,
     "rootDir": "."
   },
