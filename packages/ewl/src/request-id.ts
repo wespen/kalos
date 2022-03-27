@@ -5,9 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 /**
  * The express handler that injects a generated uuid into the context.
  */
-export const requestIdHandler = (req: Request, res: Response, next: NextFunction): void => {
+export const requestIdHandler = (_req: Request, _res: Response, next: NextFunction): void => {
   const requestId: string = uuidv4();
-  httpContext.middleware(req, res, next);
   httpContext.set('requestId', requestId);
   next();
 };

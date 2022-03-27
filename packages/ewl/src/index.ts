@@ -1,4 +1,5 @@
 import { Handler } from 'express';
+import * as httpContext from 'express-http-context';
 import {
   BaseLoggerOptions,
   FilterRequest,
@@ -21,6 +22,8 @@ export class Ewl {
 
   public readonly logger: Logger;
 
+  public readonly httpContextMiddleware;
+
   constructor(options?: OptionalConfig) {
     const { config, errors } = Config.validate(options);
     if (errors.length > 0) {
@@ -28,6 +31,7 @@ export class Ewl {
     }
     this.config = config;
     this.logger = this.create();
+    this.httpContextMiddleware = httpContext.middleware;
   }
 
   public debug(message: string, context?: string): Logger {
