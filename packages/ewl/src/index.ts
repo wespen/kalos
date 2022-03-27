@@ -35,24 +35,28 @@ export class Ewl {
     this.logger = this.create();
   }
 
-  public log(message: string, context?: string): Logger {
-    return this.logger.info(message, { context });
+  public debug(message: string, context?: string): Logger {
+    return this.logger.debug(message, { context });
   }
 
   public error(message: string, trace?: string, context?: string): Logger {
     return this.logger.error(message, { trace, context });
   }
 
-  public warn(message: string, context?: string): Logger {
-    return this.logger.warn(message, { context });
+  public info(message: string, context?: string): Logger {
+    return this.logger.info(message, { context });
   }
 
-  public debug(message: string, context?: string): Logger {
-    return this.logger.debug(message, { context });
+  public log(message: string, context?: string): Logger {
+    return this.logger.info(message, { context });
   }
 
   public verbose(message: string, context?: string): Logger {
     return this.logger.verbose(message, { context });
+  }
+
+  public warn(message: string, context?: string): Logger {
+    return this.logger.warn(message, { context });
   }
 
   /**

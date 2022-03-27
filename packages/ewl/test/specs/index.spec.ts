@@ -36,10 +36,10 @@ describe('EWL', () => {
       jest.clearAllMocks();
     });
 
-    test('should proxy log correctly', () => {
-      jest.spyOn(ewl.logger, 'log');
-      ewl.log('log message');
-      expect(ewl.logger.log).toBeCalledWith('info', 'log message', { context: undefined });
+    test('should proxy debug correctly', () => {
+      jest.spyOn(ewl.logger, 'debug');
+      ewl.debug('debug message');
+      expect(ewl.logger.debug).toBeCalledWith('debug message', { context: undefined });
     });
 
     test('should proxy error correctly', () => {
@@ -51,22 +51,28 @@ describe('EWL', () => {
       });
     });
 
-    test('should proxy warn correctly', () => {
-      jest.spyOn(ewl.logger, 'warn');
-      ewl.warn('warn message');
-      expect(ewl.logger.warn).toBeCalledWith('warn message', { context: undefined });
+    test('should proxy info correctly', () => {
+      jest.spyOn(ewl.logger, 'info');
+      ewl.info('info message');
+      expect(ewl.logger.info).toBeCalledWith('info message', { context: undefined });
     });
 
-    test('should proxy debug correctly', () => {
-      jest.spyOn(ewl.logger, 'debug');
-      ewl.debug('debug message');
-      expect(ewl.logger.debug).toBeCalledWith('debug message', { context: undefined });
+    test('should proxy log correctly', () => {
+      jest.spyOn(ewl.logger, 'log');
+      ewl.log('log message');
+      expect(ewl.logger.log).toBeCalledWith('info', 'log message', { context: undefined });
     });
 
     test('should proxy verbose correctly', () => {
       jest.spyOn(ewl.logger, 'verbose');
       ewl.verbose('verbose message');
       expect(ewl.logger.verbose).toBeCalledWith('verbose message', { context: undefined });
+    });
+
+    test('should proxy warn correctly', () => {
+      jest.spyOn(ewl.logger, 'warn');
+      ewl.warn('warn message');
+      expect(ewl.logger.warn).toBeCalledWith('warn message', { context: undefined });
     });
   });
 

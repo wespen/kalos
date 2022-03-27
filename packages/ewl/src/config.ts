@@ -8,11 +8,12 @@ import {
   validateSync,
 } from 'class-validator';
 
-export type LogLevel = 'log' | 'error' | 'warn' | 'debug' | 'verbose';
+export type Environment = 'development' | 'production' | 'staging' | 'test' | string;
+export type LogLevel = 'debug' | 'error' | 'info' | 'log' | 'verbose' | 'warn';
 
 export interface Options {
   attachRequestId: boolean;
-  environment: string;
+  environment: Environment;
   label: string;
   logLevel: LogLevel;
   useLogstashFormat: boolean;
@@ -34,14 +35,14 @@ export class Config implements Options {
   // The deployment environment
   @IsString()
   @IsOptional()
-  readonly environment: string = 'development';
+  readonly environment: Environment = 'development';
 
   // The label of the logger instance.
   @IsString()
   @IsOptional()
   readonly label: string = 'app';
 
-  @IsIn(['log', 'error', 'warn', 'debug', 'verbose'])
+  @IsIn(['debug', 'error', 'info', 'log', 'verbose', 'warn'])
   @IsOptional()
   readonly logLevel: LogLevel = 'error';
 
@@ -81,7 +82,13 @@ export class Config implements Options {
     errors: ValidationError[];
   } {
     // Convert the config object to it's class equivalent.
-    const config = plainToInstance(Config, options || {});
+    const config = plainToInstance(
+      Config,
+      Object.assign(
+        {},
+        { ...options, logLevel: options?.logLevel === 'log' ? 'info' : options?.logLevel },
+      ),
+    );
 
     // Validate the config.
     const errors = validateSync(config, {

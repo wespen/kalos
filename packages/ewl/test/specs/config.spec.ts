@@ -31,7 +31,7 @@ describe('Config', () => {
         version: 'unknown',
       };
       expect(Config.validate(options)).toMatchObject({
-        config: options,
+        config: { ...options, logLevel: 'info' },
         errors: [],
       });
     });
@@ -51,7 +51,7 @@ describe('Config', () => {
           expect.objectContaining({
             children: [],
             constraints: {
-              isIn: 'logLevel must be one of the following values: log, error, warn, debug, verbose',
+              isIn: 'logLevel must be one of the following values: debug, error, info, log, verbose, warn',
             },
             property: 'logLevel',
             target: options,
