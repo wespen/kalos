@@ -1,7 +1,7 @@
 import * as expressWinston from 'express-winston';
 
 import { LogLevel } from '../../src/config';
-import { Ewl } from '../../src/index';
+import { Ewl, requestIdHandler } from '../../src/index';
 
 const expressWinstonLoggerMock = jest.fn().mockReturnThis();
 jest.mock('express-winston', () => ({
@@ -12,7 +12,14 @@ describe('EWL', () => {
   let ewl: Ewl;
 
   beforeAll(() => {
-    ewl = new Ewl();
+    ewl = new Ewl({
+      attachRequestId: true,
+      environment: 'development',
+      label: 'app',
+      logLevel: 'debug' as LogLevel,
+      useLogstashFormat: false,
+      version: 'unknown',
+    });
   });
 
   beforeEach(jest.clearAllMocks);
@@ -28,6 +35,7 @@ describe('EWL', () => {
         version: 'unknown',
       };
       expect(() => new Ewl(options)).toThrowError();
+      expect(requestIdHandler).toBeDefined();
     });
   });
 
@@ -93,12 +101,6 @@ describe('EWL', () => {
       //   msg: '{{req.method}} {{req.url}}',
       //   winstonInstance: ewl.logger,
       // });
-    });
-  });
-
-  describe('getRequestIdHandler', () => {
-    test('should retrieve the request id handler correctly', () => {
-      expect(ewl.getRequestIdHandler()).toBeDefined();
     });
   });
 });

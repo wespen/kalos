@@ -5,9 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 /**
  * The express handler that injects a generated uuid into the context.
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const requestIdHandler = (_: Request, __: Response, next: NextFunction): void => {
-  httpContext.set('requestId', uuidv4());
+export const requestIdHandler = (req: Request, res: Response, next: NextFunction): void => {
+  const requestId: string = uuidv4();
+  httpContext.middleware(req, res, next);
+  httpContext.set('requestId', requestId);
   next();
 };
 
@@ -17,9 +18,7 @@ export const requestIdHandler = (_: Request, __: Response, next: NextFunction): 
  * @returns The injected request id retrieved from the http context.
  */
 export function getRequestIdContext(): string | null {
-  console.log('getRequestIdContext');
   const requestId: unknown = httpContext.get('requestId');
-  console.log(`requestId: ${String(requestId)}`);
   if (requestId) {
     return String(requestId);
   }

@@ -1,5 +1,4 @@
-import { Handler, NextFunction, Request, Response } from 'express';
-import * as httpContext from 'express-http-context';
+import { Handler } from 'express';
 import {
   BaseLoggerOptions,
   FilterRequest,
@@ -12,19 +11,15 @@ import * as Transport from 'winston-transport';
 
 import { Config, OptionalConfig } from './config';
 import { defaultFormatter, injectErrors, injectMetadata, logstashFormatter } from './formatter';
-import { requestIdHandler } from './request-id';
 import { sanitizeRequest, sanitizeResponse } from './sanitizer';
+
+export { Environment, LogLevel } from './config';
+export { requestIdHandler } from './request-id';
 
 export class Ewl {
   public readonly config: Config;
 
   public readonly logger: Logger;
-
-  /**
-   * The http context middleware to be called right before the
-   * next handler that needs to retrieve information from it.
-   */
-  public readonly httpContextMiddleware = httpContext.middleware;
 
   constructor(options?: OptionalConfig) {
     const { config, errors } = Config.validate(options);
@@ -117,9 +112,5 @@ export class Ewl {
       ...options,
       winstonInstance: this.logger,
     });
-  }
-
-  public getRequestIdHandler(): (_: Request, __: Response, next: NextFunction) => void {
-    return requestIdHandler;
   }
 }

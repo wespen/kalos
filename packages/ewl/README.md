@@ -49,21 +49,29 @@ app.listen(port, () => {
 ```typescript
 import { Application } from 'express';
 
-import { Ewl } from 'ewl';
+import { requestIdHandler, Ewl, LogLevel } from 'ewl';
 
 export let ewl: Ewl;
 
 export function initEwl(app: Application): void {
-  this.ewl = new Ewl({ attachRequestId: true, label: 'app' });
+  this.ewl = new Ewl({
+    attachRequestId: true,
+    environment: process.env.ENVIRONMENT || 'development',
+    label: 'app',
+    logLevel: (process.env.LOG_LEVEL as LogLevel) || 'error',
+    useLogstashFormat: false,
+    version: process.env.VERSION || 'local',
+  });
+
   // Use express-http-context for context injection (request id)
-  app.use(this.ewl.httpContextMiddleware);
-  app.use(this.ewl.getRequestIdHandler());
+  app.use(requestIdHandler);
+
   // Use express-winston for logging request information
   app.use(
     this.ewl.createHandler({
       bodyBlacklist: ['accessToken', 'password', 'refreshToken'],
       colorize: true,
-      expressFormat: true,
+      expressFormat: false,
       headerBlacklist: ['cookie', 'token'],
       ignoreRoute: () => false,
       meta: true,
@@ -105,21 +113,32 @@ export function loggerMiddleware(req: Request, _: Response, next: NextFunction):
 ```typescript
 import { NestFactory } from '@nestjs/core';
 
-import { Ewl } from 'ewl';
+import { requestIdHandler, Ewl, LogLevel } from 'ewl';
 
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const ewl = new Ewl({ attachRequestId: true, label: 'app' });
+  const ewl = new Ewl({
+    attachRequestId: true,
+    environment: process.env.ENVIRONMENT || 'development',
+    label: 'app',
+    logLevel: (process.env.LOG_LEVEL as LogLevel) || 'error',
+    useLogstashFormat: false,
+    version: process.env.VERSION || 'local',
+  });
+
   // Set the default NestJS logger, allowing EWL to be the proxy.
   const app = await NestFactory.create(AppModule, { logger: ewl });
+
+  // Use express-http-context for context injection (request id)
+  app.use(requestIdHandler);
 
   // Use express-winston for logging request information
   app.use(
     ewl.createHandler({
       bodyBlacklist: ['accessToken', 'password', 'refreshToken'],
       colorize: true,
-      expressFormat: true,
+      expressFormat: false,
       headerBlacklist: ['cookie', 'token'],
       ignoreRoute: () => false,
       meta: true,
@@ -138,10 +157,6 @@ async function bootstrap() {
       statusLevels: true,
     }),
   );
-
-  // Use express-http-context for context injection (request id)
-  app.use(ewl.httpContextMiddleware);
-  app.use(ewl.getRequestIdHandler());
 
   ewl.debug('Starting application on localhost:3000');
 

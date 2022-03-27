@@ -12,6 +12,7 @@ const httpContextGetMock = jest.fn().mockReturnValue(requestId);
 const httpContextSetMock = jest.fn().mockReturnValue(undefined);
 jest.mock('express-http-context', () => ({
   get: (key: string): unknown => httpContextGetMock(key) as unknown,
+  middleware: jest.fn(),
   set: (key: string, value: string): unknown => httpContextSetMock(key, value) as unknown,
 }));
 
