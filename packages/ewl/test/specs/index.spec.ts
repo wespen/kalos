@@ -1,7 +1,7 @@
 import * as expressWinston from 'express-winston';
 
 import { LogLevel } from '../../src/config';
-import { Ewl, requestIdHandler, httpContextMiddleware } from '../../src/index';
+import { Ewl, httpContextMiddleware, requestIdHandler } from '../../src/index';
 
 const expressWinstonLoggerMock = jest.fn().mockReturnThis();
 jest.mock('express-winston', () => ({
