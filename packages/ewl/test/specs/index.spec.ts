@@ -1,7 +1,7 @@
 import * as expressWinston from 'express-winston';
 
 import { LogLevel } from '../../src/config';
-import { Ewl, requestIdHandler } from '../../src/index';
+import { Ewl, requestIdHandler, httpContextMiddleware } from '../../src/index';
 
 const expressWinstonLoggerMock = jest.fn().mockReturnThis();
 jest.mock('express-winston', () => ({
@@ -35,6 +35,7 @@ describe('EWL', () => {
         version: 'unknown',
       };
       expect(() => new Ewl(options)).toThrowError();
+      expect(httpContextMiddleware).toBeDefined();
       expect(requestIdHandler).toBeDefined();
     });
   });

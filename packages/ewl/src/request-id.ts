@@ -2,6 +2,8 @@ import { NextFunction, Request, Response } from 'express';
 import * as httpContext from 'express-http-context';
 import { v4 as uuidv4 } from 'uuid';
 
+export const httpContextMiddleware = httpContext.middleware;
+
 /**
  * The express handler that injects a generated uuid into the context.
  */

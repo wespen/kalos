@@ -1,5 +1,4 @@
 import { Handler } from 'express';
-import * as httpContext from 'express-http-context';
 import {
   BaseLoggerOptions,
   FilterRequest,
@@ -15,14 +14,12 @@ import { defaultFormatter, injectErrors, injectMetadata, logstashFormatter } fro
 import { sanitizeRequest, sanitizeResponse } from './sanitizer';
 
 export { Environment, LogLevel } from './config';
-export { requestIdHandler } from './request-id';
+export { httpContextMiddleware, requestIdHandler } from './request-id';
 
 export class Ewl {
   public readonly config: Config;
 
   public readonly logger: Logger;
-
-  public readonly httpContextMiddleware;
 
   constructor(options?: OptionalConfig) {
     const { config, errors } = Config.validate(options);
@@ -31,7 +28,6 @@ export class Ewl {
     }
     this.config = config;
     this.logger = this.create();
-    this.httpContextMiddleware = httpContext.middleware;
   }
 
   public debug(message: string, context?: string): Logger {
