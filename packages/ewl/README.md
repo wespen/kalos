@@ -49,7 +49,7 @@ app.listen(port, () => {
 ```typescript
 import { Application } from 'express';
 
-import { requestIdHandler, Ewl, LogLevel } from 'ewl';
+import { Ewl, LogLevel, httpContextMiddleware, requestIdHandler } from 'ewl';
 
 export let ewl: Ewl;
 
@@ -64,6 +64,7 @@ export function initEwl(app: Application): void {
   });
 
   // Use express-http-context for context injection (request id)
+  app.use(httpContextMiddleware);
   app.use(requestIdHandler);
 
   // Use express-winston for logging request information
@@ -113,7 +114,7 @@ export function loggerMiddleware(req: Request, _: Response, next: NextFunction):
 ```typescript
 import { NestFactory } from '@nestjs/core';
 
-import { requestIdHandler, Ewl, LogLevel } from 'ewl';
+import { Ewl, LogLevel, httpContextMiddleware, requestIdHandler } from 'ewl';
 
 import { AppModule } from './app.module';
 
@@ -131,6 +132,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { logger: ewl });
 
   // Use express-http-context for context injection (request id)
+  app.use(httpContextMiddleware);
   app.use(requestIdHandler);
 
   // Use express-winston for logging request information

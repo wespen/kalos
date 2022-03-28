@@ -29,9 +29,9 @@ describe('Request ID', () => {
       expect(httpContextGetMock).toBeCalledTimes(1);
     });
 
-    test('should return null if the request id is not set', () => {
+    test('should return "unknown" if the request id is not set', () => {
       httpContextGetMock.mockReturnValueOnce(undefined);
-      expect(getRequestIdContext()).toBeNull();
+      expect(getRequestIdContext()).toEqual('unknown');
       expect(httpContextGetMock).toBeCalledWith('requestId');
     });
   });
