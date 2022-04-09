@@ -3,7 +3,7 @@ name: markdown
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - '**.md'
       - .github/workflows/markdown.yaml
