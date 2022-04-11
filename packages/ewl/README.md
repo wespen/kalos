@@ -36,7 +36,7 @@ import { Application } from 'express';
 import { ewl, initEwl } from './logger';
 
 const app = express() as Application;
-loggerInit(app);
+initEwl(app);
 
 const port = 3000;
 app.listen(port, () => {
@@ -48,13 +48,12 @@ app.listen(port, () => {
 
 ```typescript
 import { Application } from 'express';
-
 import { Ewl, LogLevel, httpContextMiddleware, requestIdHandler } from 'ewl';
 
 export let ewl: Ewl;
 
 export function initEwl(app: Application): void {
-  this.ewl = new Ewl({
+  ewl = new Ewl({
     attachRequestId: true,
     environment: process.env.ENVIRONMENT || 'development',
     label: 'app',
@@ -69,7 +68,7 @@ export function initEwl(app: Application): void {
 
   // Use express-winston for logging request information
   app.use(
-    this.ewl.createHandler({
+    ewl.createHandler({
       bodyBlacklist: ['accessToken', 'password', 'refreshToken'],
       colorize: true,
       expressFormat: false,
