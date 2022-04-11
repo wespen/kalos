@@ -44,7 +44,7 @@ export class Ewl {
       const store = new Map<string, Logger>();
       store.set('logger', child);
       storage.run(store, () => {
-        return next(store.get('logger'));
+        next();
       });
     };
   }
