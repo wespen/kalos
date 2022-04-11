@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Logger, config, createLogger, format, transports } from 'winston';
 import * as Transport from 'winston-transport';
 
-import { storage } from './async-storage';
+import { StoreContents, storage } from './async-storage';
 import { Config, OptionalConfig } from './config';
 import { defaultFormatter, injectErrors, injectMetadata, logstashFormatter } from './formatter';
 import { sanitizeRequest, sanitizeResponse } from './sanitizer';
@@ -35,14 +35,14 @@ export class Ewl {
     this.logger = new Proxy(logger, {
       get(target: Logger, property: string | symbol, receiver: unknown): Logger {
         const store = storage.getStore();
-        target = store?.get('logger') || target;
+        target = store?.get(config.label)?.logger || target;
         return Reflect.get(target, property, receiver) as Logger;
       },
     });
     this.contextMiddleware = (_req: Request, _res: Response, next: NextFunction): void => {
-      const child = logger.child({ requestId: uuidv4() });
-      const store = new Map<string, Logger>();
-      store.set('logger', child);
+      const store = new Map<string, StoreContents>();
+      const requestId = uuidv4();
+      store.set(config.label, { logger: logger.child({ requestId }), requestId });
       storage.run(store, () => {
         next();
       });

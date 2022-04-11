@@ -3,6 +3,7 @@ import jsonStringify from 'safe-stable-stringify';
 import { MESSAGE } from 'triple-beam';
 import { format } from 'winston';
 
+import { storage } from './async-storage';
 import { Config } from './config';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -10,6 +11,10 @@ function attachMetadata(config: Config, info: TransformableInfo): TransformableI
   // Add extra metadata from the config
   info.environment = config.environment;
   info.version = config.version;
+  if (!info.requestId) {
+    const store = storage.getStore();
+    info.requestId = store?.get(config.label)?.requestId;
+  }
   return info;
 }
 /* eslint-enable @typescript-eslint/no-unsafe-assignment */
