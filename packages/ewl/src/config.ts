@@ -12,7 +12,6 @@ export type Environment = 'development' | 'production' | 'staging' | 'test' | st
 export type LogLevel = 'debug' | 'error' | 'info' | 'log' | 'verbose' | 'warn';
 
 export interface Options {
-  attachRequestId: boolean;
   environment: Environment;
   label: string;
   logLevel: LogLevel;
@@ -27,11 +26,6 @@ export type OptionalProperty<T> = {
 export type OptionalConfig = OptionalProperty<Options>;
 
 export class Config implements Options {
-  // Whether or not a unique id should be attached to the express request object.
-  @IsBoolean()
-  @IsOptional()
-  readonly attachRequestId: boolean = true;
-
   // The deployment environment
   @IsString()
   @IsOptional()

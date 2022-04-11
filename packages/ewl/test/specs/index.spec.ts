@@ -1,7 +1,15 @@
+import { Request, Response } from 'express';
 import * as expressWinston from 'express-winston';
+import { v4 as uuidv4 } from 'uuid';
 
 import { LogLevel } from '../../src/config';
-import { Ewl, httpContextMiddleware, requestIdHandler } from '../../src/index';
+import { Ewl } from '../../src/index';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const uuidv4Mock: typeof uuidv4 & jest.Mock = uuidv4 as any;
+jest.mock('uuid');
+
+const requestId = '75e10ee1-6c92-4c58-b639-8a5875da1820';
 
 const expressWinstonLoggerMock = jest.fn().mockReturnThis();
 jest.mock('express-winston', () => ({
@@ -13,7 +21,6 @@ describe('EWL', () => {
 
   beforeAll(() => {
     ewl = new Ewl({
-      attachRequestId: true,
       environment: 'development',
       label: 'app',
       logLevel: 'debug' as LogLevel,
@@ -27,7 +34,6 @@ describe('EWL', () => {
   describe('constructor', () => {
     test('throws if invalid options are provided', () => {
       const options = {
-        attachRequestId: true,
         environment: 'development',
         label: 'app',
         logLevel: 'not-valid' as LogLevel,
@@ -35,8 +41,6 @@ describe('EWL', () => {
         version: 'unknown',
       };
       expect(() => new Ewl(options)).toThrowError();
-      expect(httpContextMiddleware).toBeDefined();
-      expect(requestIdHandler).toBeDefined();
     });
   });
 
@@ -102,6 +106,15 @@ describe('EWL', () => {
       //   msg: '{{req.method}} {{req.url}}',
       //   winstonInstance: ewl.logger,
       // });
+    });
+  });
+
+  describe('contextMiddleware', () => {
+    test('should set the request id correctly via the context middleware', () => {
+      uuidv4Mock.mockImplementation(jest.fn(() => requestId));
+      const nextMock = jest.fn();
+      ewl.contextMiddleware({} as Request, {} as Response, nextMock);
+      expect(nextMock).toBeCalledTimes(1);
     });
   });
 });

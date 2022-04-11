@@ -48,13 +48,12 @@ app.listen(port, () => {
 
 ```typescript
 import { Application } from 'express';
-import { Ewl, LogLevel, httpContextMiddleware, requestIdHandler } from 'ewl';
+import { Ewl, LogLevel } from 'ewl';
 
 export let ewl: Ewl;
 
 export function initEwl(app: Application): void {
   ewl = new Ewl({
-    attachRequestId: true,
     environment: process.env.ENVIRONMENT || 'development',
     label: 'app',
     logLevel: (process.env.LOG_LEVEL as LogLevel) || 'error',
@@ -62,9 +61,8 @@ export function initEwl(app: Application): void {
     version: process.env.VERSION || 'local',
   });
 
-  // Use express-http-context for context injection (request id)
-  app.use(httpContextMiddleware);
-  app.use(requestIdHandler);
+  // Use the context middleware for request id injection
+  app.use(ewl.contextMiddleware);
 
   // Use express-winston for logging request information
   app.use(
@@ -113,13 +111,12 @@ export function loggerMiddleware(req: Request, _: Response, next: NextFunction):
 ```typescript
 import { NestFactory } from '@nestjs/core';
 
-import { Ewl, LogLevel, httpContextMiddleware, requestIdHandler } from 'ewl';
+import { Ewl, LogLevel } from 'ewl';
 
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const ewl = new Ewl({
-    attachRequestId: true,
     environment: process.env.ENVIRONMENT || 'development',
     label: 'app',
     logLevel: (process.env.LOG_LEVEL as LogLevel) || 'error',
@@ -130,9 +127,8 @@ async function bootstrap() {
   // Set the default NestJS logger, allowing EWL to be the proxy.
   const app = await NestFactory.create(AppModule, { logger: ewl });
 
-  // Use express-http-context for context injection (request id)
-  app.use(httpContextMiddleware);
-  app.use(requestIdHandler);
+  // Use the context middleware for request id injection
+  app.use(ewl.contextMiddleware);
 
   // Use express-winston for logging request information
   app.use(

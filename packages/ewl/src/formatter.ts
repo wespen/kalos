@@ -4,13 +4,9 @@ import { MESSAGE } from 'triple-beam';
 import { format } from 'winston';
 
 import { Config } from './config';
-import { getRequestIdContext } from './request-id';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 function attachMetadata(config: Config, info: TransformableInfo): TransformableInfo {
-  if (config.attachRequestId) {
-    info.requestId = getRequestIdContext();
-  }
   // Add extra metadata from the config
   info.environment = config.environment;
   info.version = config.version;

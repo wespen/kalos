@@ -51,7 +51,6 @@ describe('Formatter', () => {
 
     beforeAll(() => {
       const options = {
-        attachRequestId: true,
         environment: 'development',
         label: 'app',
         logLevel: 'log' as LogLevel,

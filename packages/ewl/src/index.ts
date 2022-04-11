@@ -1,4 +1,4 @@
-import { Handler } from 'express';
+import { Handler, NextFunction, Request, Response } from 'express';
 import {
   BaseLoggerOptions,
   FilterRequest,
@@ -6,20 +6,23 @@ import {
   logger as expressWinstonLogger,
 } from 'express-winston';
 import jsonStringify from 'safe-stable-stringify';
+import { v4 as uuidv4 } from 'uuid';
 import { Logger, config, createLogger, format, transports } from 'winston';
 import * as Transport from 'winston-transport';
 
+import { storage } from './async-storage';
 import { Config, OptionalConfig } from './config';
 import { defaultFormatter, injectErrors, injectMetadata, logstashFormatter } from './formatter';
 import { sanitizeRequest, sanitizeResponse } from './sanitizer';
 
 export { Environment, LogLevel } from './config';
-export { httpContextMiddleware, requestIdHandler } from './request-id';
 
 export class Ewl {
   public readonly config: Config;
 
   public readonly logger: Logger;
+
+  public readonly contextMiddleware: (req: Request, res: Response, next: NextFunction) => void;
 
   constructor(options?: OptionalConfig) {
     const { config, errors } = Config.validate(options);
@@ -27,7 +30,23 @@ export class Ewl {
       throw new Error(jsonStringify(Config.formatValidationErrors(errors)));
     }
     this.config = config;
-    this.logger = this.create();
+    const logger = this.create();
+    // Proxify the logger instance to use a child logger from async storage if it exists.
+    this.logger = new Proxy(logger, {
+      get(target: Logger, property: string | symbol, receiver: unknown): Logger {
+        const store = storage.getStore();
+        target = store?.get('logger') || target;
+        return Reflect.get(target, property, receiver) as Logger;
+      },
+    });
+    this.contextMiddleware = (_req: Request, _res: Response, next: NextFunction): void => {
+      const child = logger.child({ requestId: uuidv4() });
+      const store = new Map<string, Logger>();
+      store.set('logger', child);
+      storage.run(store, () => {
+        return next(store);
+      });
+    };
   }
 
   public debug(message: string, context?: string): Logger {

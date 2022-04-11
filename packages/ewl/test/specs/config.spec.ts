@@ -23,7 +23,6 @@ describe('Config', () => {
   describe('validate', () => {
     test('should transform and validate the provided config correctly', () => {
       const options = {
-        attachRequestId: true,
         environment: 'development',
         label: 'app',
         logLevel: 'log' as LogLevel,
@@ -38,7 +37,6 @@ describe('Config', () => {
 
     test('should should errors if validation fails', () => {
       const options = {
-        attachRequestId: true,
         environment: 'development',
         label: 'app',
         logLevel: 'not-valid' as LogLevel,
