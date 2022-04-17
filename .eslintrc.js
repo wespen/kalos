@@ -18,7 +18,7 @@ module.exports = {
     'prettier',
   ],
   parserOptions: {
-    project: ['./tsconfig.eslint.json', './packages/*/*/tsconfig.json'],
+    project: ['./tsconfig.json', './packages/*/*/tsconfig.json'],
     tsconfigRootDir: __dirname,
   },
   overrides: [
