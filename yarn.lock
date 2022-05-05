@@ -1528,6 +1528,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^17.0.31":
+  version: 17.0.31
+  resolution: "@types/node@npm:17.0.31"
+  checksum: 704618350f8420d5c47db0f7778398e821b7724369946f5c441a7e6b9343295553936400eb8309f0b07d5e39c240988ab3456b983712ca86265dabc9aee4ad3d
+  languageName: node
+  linkType: hard
+
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.1
   resolution: "@types/normalize-package-data@npm:2.4.1"
@@ -4059,7 +4066,7 @@ __metadata:
     "@grpc/proto-loader": ^0.6.11
     "@types/google-protobuf": ^3.15.6
     "@types/jest": ^27.5.0
-    "@types/node": ^16.11.33
+    "@types/node": ^17.0.31
     google-protobuf: ^3.20.1
     grpc-boom: "link:../grpc-boom/src"
     jest: ^28.0.3
@@ -4068,7 +4075,7 @@ __metadata:
     rimraf: ^3.0.2
     typescript: ^4.6.4
   peerDependencies:
-    "@types/node": ^16.11.27
+    "@types/node": ^17.0.31
   languageName: unknown
   linkType: soft
 
