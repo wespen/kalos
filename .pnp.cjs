@@ -1760,9 +1760,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/rxjs",\
             "cache-manager",\
             "class-transformer",\
-            "class-validator",\
-            "reflect-metadata",\
-            "rxjs"\
+            "class-validator"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1982,16 +1980,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@tsconfig-node16-npm-1.0.2-1f43ab567a-ca94d36397.zip/node_modules/@tsconfig/node16/",\
           "packageDependencies": [\
             ["@tsconfig/node16", "npm:1.0.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@types/axios", [\
-        ["npm:0.14.0", {\
-          "packageLocation": "./.yarn/cache/@types-axios-npm-0.14.0-42f41917ea-12a230b940.zip/node_modules/@types/axios/",\
-          "packageDependencies": [\
-            ["@types/axios", "npm:0.14.0"],\
-            ["axios", "npm:0.27.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7734,9 +7722,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@nestjs/common",\
             "@types/nestjs__common",\
             "@types/reflect-metadata",\
-            "@types/rxjs",\
-            "reflect-metadata",\
-            "rxjs"\
+            "@types/rxjs"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7747,18 +7733,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["nest-typed-config-extended", "workspace:packages/nest-typed-config-extended"],\
             ["@nestjs/common", "virtual:e67c9dbfa7623e7c11f78a3b3ab2476db63afbf7bd7eec51434268a428fd304410ce5b9bb3dd8a7c30d2c6e6ee8508b956c5e14e71a8d7d14b8e2db80223c58b#npm:8.4.5"],\
-            ["@types/axios", "npm:0.14.0"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
-            ["axios", "npm:0.27.2"],\
             ["class-transformer", "npm:0.5.1"],\
             ["class-validator", "npm:0.13.2"],\
             ["jest", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:28.1.0"],\
             ["kalos", "workspace:."],\
             ["nest-typed-config", "virtual:e67c9dbfa7623e7c11f78a3b3ab2476db63afbf7bd7eec51434268a428fd304410ce5b9bb3dd8a7c30d2c6e6ee8508b956c5e14e71a8d7d14b8e2db80223c58b#npm:2.4.1"],\
-            ["reflect-metadata", "npm:0.1.13"],\
             ["rimraf", "npm:3.0.2"],\
-            ["rxjs", "npm:7.5.5"],\
             ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "linkType": "SOFT"\
