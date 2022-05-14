@@ -1,8 +1,8 @@
 # Nest Typed Config Extended
 
 [![License][license-image]][license-url]
-[![Current Version](https://img.shields.io/npm/v/ewl.svg)](https://www.npmjs.com/package/nest-typed-config-extended)
-[![npm](https://img.shields.io/npm/dw/ewl.svg)](https://www.npmjs.com/package/nest-typed-config-extended)
+[![Current Version](https://img.shields.io/npm/v/nest-typed-config-extended.svg)](https://www.npmjs.com/package/nest-typed-config-extended)
+[![npm](https://img.shields.io/npm/dw/nest-typed-config-extended.svg)](https://www.npmjs.com/package/nest-typed-config-extended)
 
 [license-url]: https://opensource.org/licenses/MIT
 [license-image]: https://img.shields.io/npm/l/make-coverage-badge.svg
