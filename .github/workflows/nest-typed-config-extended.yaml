@@ -1,0 +1,31 @@
+name: nest-typed-config-extended
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/nest-typed-config-extended.yaml
+      - packages/nest-typed-config-extended/**
+      - package.json
+      - tsconfig.json
+      - types/**/*.ts
+      - '!**.md'
+      - '!**/.gitignore'
+  pull_request:
+    paths:
+      - .github/workflows/nest-typed-config-extended.yaml
+      - packages/nest-typed-config-extended/**
+      - package.json
+      - tsconfig.json
+      - types/**/*.ts
+      - '!**.md'
+      - '!**/.gitignore'
+
+jobs:
+  code:
+    uses: ./.github/workflows/code.yaml
+    with:
+      package: nest-typed-config-extended
+    secrets:
+      token: ${{ secrets.REPO_ACCESS_TOKEN }}
