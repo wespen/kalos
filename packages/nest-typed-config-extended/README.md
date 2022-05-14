@@ -29,8 +29,6 @@ import { Config } from './common/config';
       isGlobal: true,
       load: dotenvLoaderExtended({
         envFilePath: ['.env'],
-        ignoreEnvFile: true,
-        ignoreEnvVars: false,
         separator: '__',
         transformFromUpperSnakeCase: true,
       }),
