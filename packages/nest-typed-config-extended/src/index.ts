@@ -1,5 +1,7 @@
 import { DotenvLoaderOptions, dotenvLoader } from 'nest-typed-config';
 
+export { selectConfig } from 'nest-typed-config';
+
 export { TypedConfigModuleExtended } from './typed-config-extended.module';
 
 export interface DotenvLoaderExtendedOptions extends DotenvLoaderOptions {
