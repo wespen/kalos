@@ -8,16 +8,18 @@ export class TypedConfigModuleExtended {
   public static forRoot<T extends object>(options: TypedConfigModuleOptions): DynamicModule {
     return TypedConfigModule.forRoot({
       ...options,
-      validate: ((
-        rawConfig: Record<string, unknown>,
-        configClass: ClassConstructor<T>,
-        options?: Partial<ValidatorOptions>,
-      ) =>
-        TypedConfigModuleExtended.validateWithClassValidator<T>(
-          rawConfig,
-          configClass,
-          options,
-        )) as (config: Record<string, unknown>) => Record<string, unknown>,
+      validate:
+        options.validate ||
+        (((
+          rawConfig: Record<string, unknown>,
+          configClass: ClassConstructor<T>,
+          options?: Partial<ValidatorOptions>,
+        ) =>
+          TypedConfigModuleExtended.validateWithClassValidator<T>(
+            rawConfig,
+            configClass,
+            options,
+          )) as (config: Record<string, unknown>) => Record<string, unknown>),
     });
   }
 
