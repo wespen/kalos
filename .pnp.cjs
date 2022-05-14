@@ -2972,6 +2972,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["async_hooks", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/async_hooks-npm-1.0.0-901c958bd8-d31a4cb971.zip/node_modules/async_hooks/",\
+          "packageDependencies": [\
+            ["async_hooks", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["asynckit", [\
         ["npm:0.4.0", {\
           "packageLocation": "./.yarn/cache/asynckit-npm-0.4.0-c718858525-7b78c451df.zip/node_modules/asynckit/",\
@@ -4909,6 +4918,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/triple-beam", "npm:1.3.2"],\
             ["@types/uuid", "npm:8.3.4"],\
             ["@types/validator", "npm:13.7.2"],\
+            ["async_hooks", "npm:1.0.0"],\
             ["class-transformer", "npm:0.5.1"],\
             ["class-validator", "npm:0.13.2"],\
             ["common-tags", "npm:1.8.2"],\
