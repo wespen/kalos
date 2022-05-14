@@ -2233,13 +2233,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:17.0.21"]\
           ],\
           "linkType": "HARD"\
-        }],\
-        ["npm:17.0.31", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-17.0.31-d8d26aa013-704618350f.zip/node_modules/@types/node/",\
-          "packageDependencies": [\
-            ["@types/node", "npm:17.0.31"]\
-          ],\
-          "linkType": "HARD"\
         }]\
       ]],\
       ["@types/normalize-package-data", [\
@@ -5576,7 +5569,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@grpc/proto-loader", "npm:0.6.12"],\
             ["@types/google-protobuf", "npm:3.15.6"],\
             ["@types/jest", "npm:27.5.1"],\
-            ["@types/node", "npm:17.0.31"],\
+            ["@types/node", "npm:16.11.35"],\
             ["google-protobuf", "npm:3.20.1"],\
             ["grpc-boom", "link:../grpc-boom/src::locator=grpc-ts-health-check%40workspace%3Apackages%2Fgrpc-ts-health-check"],\
             ["jest", "virtual:7c2326a071ac85dfef8db5556b920940ed908bad31c6c5cdb2d2256c09ce3caf6f5010323256f5f40c30eb78762940f5d3235ae13e1484e3b5d0ee6ec9421a31#npm:28.1.0"],\
@@ -7756,7 +7749,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["reflect-metadata", "npm:0.1.13"],\
             ["rimraf", "npm:3.0.2"],\
             ["rxjs", "npm:7.5.5"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "linkType": "SOFT"\
         }]\
