@@ -1,6 +1,4 @@
-import { selectConfig } from 'nest-typed-config';
-
-import { TypedConfigModuleExtended, dotenvLoaderExtended } from '../../src/index';
+import { TypedConfigModuleExtended, dotenvLoaderExtended, selectConfig } from '../../src/index';
 import { Config } from '../example/config';
 
 describe('Typed Config Module Extended', () => {
